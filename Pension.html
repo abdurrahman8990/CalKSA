@@ -90,21 +90,21 @@
     <label>هذا الحقل للمراقبة: <input name="bot-field"></label>
   </p>
                 <div class="mb-3">
-                    <label for="salary" class="form-label">الراتب الأساسي (آخر راتب)</label>
-                    <input type="number" class="form-control" id="salary" required>
-                    <div class="form-note mt-1">الراتب الأساسي بدون البدلات</div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="years" class="form-label">عدد السنوات</label>
-                        <input type="number" class="form-control" id="years" min="0" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="months" class="form-label">عدد الأشهر (اختياري)</label>
-                        <input type="number" class="form-control" id="months" min="0" max="11">
-                    </div>
-                </div>
+    <label for="salary" class="form-label">الراتب الأساسي (آخر راتب)</label>
+    <input type="number" class="form-control" id="salary" name="final-salary" required>
+    <div class="form-note mt-1">الراتب الأساسي بدون البدلات</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="years" class="form-label">عدد السنوات</label>
+        <input type="number" class="form-control" id="years" name="service-years" min="0" required>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="months" class="form-label">عدد الأشهر (اختياري)</label>
+        <input type="number" class="form-control" id="months" name="service-months" min="0" max="11">
+    </div>
+</div>
                 
                 <button type="submit" class="btn btn-purple w-100">احسب الراتب التقاعدي</button>
             </form>
