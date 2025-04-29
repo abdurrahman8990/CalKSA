@@ -78,7 +78,17 @@
         <div class="calculator-container">
             <h3 class="text-center mb-4" style="color: var(--lavender-dark);">المعادلة: (آخر راتب × عدد أشهر الخدمة) ÷ 480</h3>
             
-            <form id="pensionForm">
+            <form 
+  id="pensionForm"
+  name="pension-calculator"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+>
+  <input type="hidden" name="form-name" value="pension-calculator">
+  <p style="display: none;">
+    <label>هذا الحقل للمراقبة: <input name="bot-field"></label>
+  </p>
                 <div class="mb-3">
                     <label for="salary" class="form-label">الراتب الأساسي (آخر راتب)</label>
                     <input type="number" class="form-control" id="salary" required>
