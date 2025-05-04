@@ -119,23 +119,28 @@
 
     <script>
         document.getElementById('pensionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // الحصول على القيم المدخلة
-            const salary = parseFloat(document.getElementById('salary').value);
-            const years = parseInt(document.getElementById('years').value);
-            const months = parseInt(document.getElementById('months').value) || 0;
-            
-            // حساب عدد أشهر الخدمة
-            const totalMonths = (years * 12) + months;
-            
-            // تطبيق المعادلة
-            const pension = (salary * totalMonths) / 480;
-            
-            // عرض النتيجة
-            document.getElementById('result').textContent = pension.toFixed(2);
-            document.getElementById('resultBox').style.display = 'block';
-        });
+    e.preventDefault();
+    
+    // الحصول على القيم المدخلة
+    const salary = parseFloat(document.getElementById('salary').value);
+    const years = parseInt(document.getElementById('years').value);
+    const months = parseInt(document.getElementById('months').value) || 0;
+    
+    // حساب عدد أشهر الخدمة
+    const totalMonths = (years * 12) + months;
+    
+    // تطبيق المعادلة
+    const pension = (salary * totalMonths) / 480;
+    
+    // عرض النتيجة
+    document.getElementById('result').textContent = pension.toFixed(2);
+    document.getElementById('resultBox').style.display = 'block';
+    
+    // إرسال الفورم إلى Netlify بعد 3 ثواني (لإعطاء وقت لرؤية النتيجة)
+    setTimeout(() => {
+        this.submit();
+    }, 3000);
+});
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
