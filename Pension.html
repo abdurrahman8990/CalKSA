@@ -116,30 +116,38 @@
             </div>
         </div>
     </div>
-
+<div class="result-box" id="resultBox">
+    <h4 class="text-center">الراتب التقاعدي المتوقع</h4>
+    <div class="text-center fs-2 fw-bold" id="result" style="color: var(--lavender-dark);"></div>
+    <div class="text-center mt-2">ريال سعودي</div>
+    <div class="text-center mt-3">
+        <a href="index.html" class="btn btn-purple">العودة للصفحة الرئيسية</a>
+    </div>
+</div>
     <script>
         document.getElementById('pensionForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     // الحصول على القيم المدخلة
+    const formData = new FormData(this);
     const salary = parseFloat(document.getElementById('salary').value);
     const years = parseInt(document.getElementById('years').value);
     const months = parseInt(document.getElementById('months').value) || 0;
     
-    // حساب عدد أشهر الخدمة
+    // حساب النتيجة
     const totalMonths = (years * 12) + months;
-    
-    // تطبيق المعادلة
     const pension = (salary * totalMonths) / 480;
     
     // عرض النتيجة
     document.getElementById('result').textContent = pension.toFixed(2);
     document.getElementById('resultBox').style.display = 'block';
     
-    // إرسال الفورم إلى Netlify بعد 3 ثواني (لإعطاء وقت لرؤية النتيجة)
-    setTimeout(() => {
-        this.submit();
-    }, 3000);
+    // إرسال البيانات خفيةً إلى Netlify
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+    }).catch(error => console.error('Error:', error));
 });
     </script>
 
