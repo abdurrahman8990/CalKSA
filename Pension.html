@@ -1,153 +1,58 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة الراتب التقاعدي - موظفي الخدمة المدنية</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- باقي الـ head كما هو بدون تغيير -->
     <style>
-        :root {
-            --lavender-primary: #A57BBA;
-            --lavender-dark: #7D4B98;
-            --bg-light: #F9F5FA;
-            --gray-100: #F3F4F6;
-            --gray-200: #E5E7EB;
-        }
-        
-        body {
-            background-color: var(--bg-light);
-            font-family: 'Arial', sans-serif;
-            padding-top: 20px;
-        }
-        
-        .header {
-            background-color: var(--lavender-primary);
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .calculator-container {
-            background-color: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-note {
-            color: var(--lavender-dark);
-            font-size: 0.85rem;
-            opacity: 0.7;
-        }
-        
-        .btn-purple {
-            background-color: var(--lavender-primary);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 8px;
+        /* أضف هذا في قسم الـ styles */
+        .back-btn {
             margin-top: 20px;
+            transition: all 0.3s;
         }
-        
-        .btn-purple:hover {
-            background-color: var(--lavender-dark);
-        }
-        
-        .result-box {
-            background-color: var(--gray-100);
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
-            display: none;
+        .back-btn:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>حاسبة الراتب التقاعدي</h1>
-            <p class="mb-0">موظفي الخدمة المدنية</p>
-        </div>
-
-        <div class="calculator-container">
-            <h3 class="text-center mb-4" style="color: var(--lavender-dark);">المعادلة: (آخر راتب × عدد أشهر الخدمة) ÷ 480</h3>
-            
-            <form 
-  id="pensionForm"
-  name="pension-calculator"
-  method="POST"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
->
-  <input type="hidden" name="form-name" value="pension-calculator">
-  <p style="display: none;">
-    <label>هذا الحقل للمراقبة: <input name="bot-field"></label>
-  </p>
-                <div class="mb-3">
-    <label for="salary" class="form-label">الراتب الأساسي (آخر راتب)</label>
-    <input type="number" class="form-control" id="salary" name="final-salary" required>
-    <div class="form-note mt-1">الراتب الأساسي بدون البدلات</div>
-</div>
-
-<div class="row">
-    <div class="col-md-6 mb-3">
-        <label for="years" class="form-label">عدد السنوات</label>
-        <input type="number" class="form-control" id="years" name="service-years" min="0" required>
-    </div>
-    <div class="col-md-6 mb-3">
-        <label for="months" class="form-label">عدد الأشهر (اختياري)</label>
-        <input type="number" class="form-control" id="months" name="service-months" min="0" max="11">
-    </div>
-</div>
-                
-                <button type="submit" class="btn btn-purple w-100">احسب الراتب التقاعدي</button>
-            </form>
-            
-            <div class="result-box" id="resultBox">
-                <h4 class="text-center">الراتب التقاعدي المتوقع</h4>
-                <div class="text-center fs-2 fw-bold" id="result" style="color: var(--lavender-dark);"></div>
-                <div class="text-center mt-2">ريال سعودي</div>
-                 <div class="text-center mt-3">
-        <a href="index.html" class="btn btn-purple">العودة للصفحة الرئيسية</a>
-    </div>
-</div>
-            </div>
+    <!-- باقي الجسم كما هو حتى قسم النتائج -->
+    
+    <div class="result-box" id="resultBox">
+        <h4 class="text-center">الراتب التقاعدي المتوقع</h4>
+        <div class="text-center fs-2 fw-bold" id="result" style="color: var(--lavender-dark);"></div>
+        <div class="text-center mt-2">ريال سعودي</div>
+        <div class="text-center mt-4">
+            <a href="index.html" class="btn btn-purple back-btn">
+                <i class="fas fa-arrow-left me-2"></i> العودة للصفحة الرئيسية
+            </a>
         </div>
     </div>
+    <!-- تم إزالة الـ div الزائد هنا -->
+</div>
 
-    <script>
-        document.getElementById('pensionForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // الحصول على القيم المدخلة
-    const formData = new FormData(this);
-    const salary = parseFloat(document.getElementById('salary').value);
-    const years = parseInt(document.getElementById('years').value);
-    const months = parseInt(document.getElementById('months').value) || 0;
-    
-    // حساب النتيجة
-    const totalMonths = (years * 12) + months;
-    const pension = (salary * totalMonths) / 480;
-    
-    // عرض النتيجة
-    document.getElementById('result').textContent = pension.toFixed(2);
-    document.getElementById('resultBox').style.display = 'block';
-    
-    // إرسال البيانات خفيةً إلى Netlify
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
-    }).catch(error => console.error('Error:', error));
-});
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<script>
+    // الكود المعدل مع تحسينات إضافية
+    document.getElementById('pensionForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const salary = parseFloat(document.getElementById('salary').value) || 0;
+        const years = parseInt(document.getElementById('years').value) || 0;
+        const months = parseInt(document.getElementById('months').value) || 0;
+        
+        const totalMonths = (years * 12) + months;
+        const pension = totalMonths > 0 ? (salary * totalMonths) / 480 : 0;
+        
+        document.getElementById('result').textContent = pension.toFixed(2);
+        document.getElementById('resultBox').style.display = 'block';
+        
+        // إرسال البيانات بدون التأثير على تجربة المستخدم
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString()
+        }).then().catch(error => console.log('Form submission logged'));
+        
+        // Scroll إلى النتيجة
+        document.getElementById('resultBox').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
