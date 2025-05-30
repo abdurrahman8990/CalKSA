@@ -1,0 +1,11 @@
+/* ملف التنسيقات العام */
+:root {
+  --primary-color: #723F8E; /* لون الخزامى */
+  --secondary-color: #F5D7A1; /* لون ذهبي */
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
