@@ -1,42 +1,74 @@
-/* تنسيقات الهيدر */
+/* تنسيقات عامة */
+:root {
+  --primary-color: #437850; /* اللون الأخضر الأساسي */
+  --secondary-color: #EDF2F7; /* الخلفية الفاتحة */
+  --card-bg: #FFFFFF; /* خلفية الكروت */
+}
+
+body {
+  background-color: var(--secondary-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* تنسيق الهيدر الجديد */
 .main-header {
-  background-color: #437850;
+  background-color: var(--primary-color);
   padding: 15px 0;
   text-align: center;
-}
-
-.header-content {
-  max-width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.site-logo {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 10px;
 }
 
 .header-banner {
   max-width: 100%;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-/* استعادة تنسيقات الكروت */
+/* تنسيق الكروت */
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   padding: 20px;
+  margin-top: 20px;
 }
 
 .calculator-card {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 12px;
   padding: 25px;
   width: 300px;
+  text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.calculator-card:hover {
+  transform: translateY(-5px);
+}
+
+/* تنسيق الأزرار */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  margin-top: 15px;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #3a6a47; /* لون أخضر داكن عند التحويم */
+}
+
+/* تنسيق الأيقونات */
+.calculator-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
 }
