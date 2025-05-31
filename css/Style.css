@@ -66,6 +66,11 @@ body {
   background-color: #3a6a47; /* لون أخضر داكن عند التحويم */
 }
 
+.btn-outline-secondary i.fa-home {
+    font-size: 1.3rem; /* حجم أكبر قليلاً */
+    color: #437850; /* لون أخضر */
+}
+
 /* تنسيق الأيقونات */
 .calculator-icon {
   font-size: 2.5rem;
